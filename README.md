@@ -4,15 +4,15 @@ for packaging Java libraries/programs as [Debian packages](https://en.wikipedia.
 
 ## Examples
 
-### simple-library
+### [simple-library](simple-library)
 
 Shows how to package a Java library and its dependencies.
 
-### simple-executable
+### [simple-executable](simple-executable)
 
 Packages a Java program and its dependencies.
 
-### multi-module
+### [multi-module](multi-module)
 
 Turns on Debian packaging only in the relevant sub-modules.
 
