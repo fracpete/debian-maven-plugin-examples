@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.github.fracpete</groupId>
+    <artifactId>multi-module-pom</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>multi-executable</artifactId>
+  <packaging>jar</packaging>
+
+  <name>multi-executable</name>
+  <description>Example Java application for demonstrating the debian-maven-plugin.</description>
+  <organization>
+    <name>University of Waikato, Hamilton, NZ</name>
+    <url>http://www.waikato.ac.nz/</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>GNU General Public License 3</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>fracpete</id>
+      <name>Peter Reutemann</name>
+      <email>fracpete@waikato.ac.nz</email>
+      <url>http://www.cms.waikato.ac.nz/~fracpete/</url>
+      <organization>University of Waikato, CS department</organization>
+      <organizationUrl>http://www.cs.waikato.ac.nz/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+12</timezone>
+    </developer>
+  </developers>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.github.fracpete</groupId>
+      <artifactId>multi-library</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.fracpete</groupId>
+        <artifactId>debian-maven-plugin</artifactId>
+        <configuration>
+          <skip>false</skip>
+          <packageName>${project.name}</packageName>
+          <packageTitle>Simple Java Program Debian packaging</packageTitle>
+          <packageVersion>${project.version}</packageVersion>
+          <projectUrl>${project.url}</projectUrl>
+          <packageDescription>Demonstrates how to package a Java applications for Debian.</packageDescription>
+          <createSymLinks>false</createSymLinks>
+          <createIncludeFiles>false</createIncludeFiles>
+          <excludeArtifactsRegExp>
+            <param>.*sources.*</param>
+          </excludeArtifactsRegExp>
+          <useDefaultCopyResources>false</useDefaultCopyResources>
+          <copyResources>
+            <copyResource>
+              <source>${project.basedir}/src/deb/resources</source>
+              <target>${project.basedir}/target/deb</target>
+            </copyResource>
+            <copyResource>
+              <source>${project.basedir}/target/sources</source>
+              <target>${project.basedir}/target/deb/usr/lib/${project.name}/src</target>
+              <include>.*\.jar</include>
+            </copyResource>
+            <copyResource>
+              <source>${project.basedir}/target</source>
+              <target>${project.basedir}/target/deb/usr/lib/${project.name}/src</target>
+              <include>.*-sources\.jar</include>
+            </copyResource>
+          </copyResources>
+          <useDefaultFixPermissions>true</useDefaultFixPermissions>
+          <packageDependencies>
+            <packageDependency>openjdk-11-jre</packageDependency>
+          </packageDependencies>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
