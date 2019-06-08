@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.fracpete</groupId>
-  <artifactId>simple-executable</artifactId>
+  <artifactId>simple-library</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -14,8 +14,8 @@
     <version>7</version>
   </parent>
 
-  <name>simple-executable</name>
-  <description>Example Java application for demonstrating the debian-maven-plugin.</description>
+  <name>simple-library</name>
+  <description>Example library for demonstrating the debian-maven-plugin.</description>
   <organization>
     <name>University of Waikato, Hamilton, NZ</name>
     <url>http://www.waikato.ac.nz/</url>
@@ -191,10 +191,10 @@
         <version>1.0.12</version>
         <configuration>
           <packageName>${project.name}</packageName>
-          <packageTitle>Simple Java Program Debian packaging</packageTitle>
+          <packageTitle>Simple Java library Debian packaging</packageTitle>
           <packageVersion>${project.version}</packageVersion>
           <projectUrl>${project.url}</projectUrl>
-          <packageDescription>Demonstrates how to package a Java applications for Debian.</packageDescription>
+          <packageDescription>Demonstrates how to package a Java library for Debian.</packageDescription>
           <createSymLinks>false</createSymLinks>
           <createIncludeFiles>false</createIncludeFiles>
           <excludeArtifactsRegExp>

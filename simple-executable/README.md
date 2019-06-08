@@ -14,3 +14,6 @@ Two scripts, located in `src/deb/resources/usr/bin`, will get installed in `/usr
 In `src/deb/resources/usr/share/applications` the following `.desktop` file is available:
 * `simple-executable.desktop` - calls the `/usr/bin/simple-executable` script and uses
   the PNG `simple-executable.png` located in `src/deb/resources/usr/share/pixmaps`
+
+The sources get installed in `/usr/lib/simple-executable/src`.
+
