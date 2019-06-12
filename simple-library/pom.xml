@@ -188,7 +188,7 @@
       <plugin>
         <groupId>com.github.fracpete</groupId>
         <artifactId>debian-maven-plugin</artifactId>
-        <version>1.0.12</version>
+        <version>1.0.15</version>
         <configuration>
           <packageName>${project.name}</packageName>
           <packageTitle>Simple Java library Debian packaging</packageTitle>
@@ -200,20 +200,20 @@
           <excludeArtifactsRegExp>
             <param>.*sources.*</param>
           </excludeArtifactsRegExp>
-          <useDefaultCopyResources>true</useDefaultCopyResources>
           <copyResources>
+            <!-- copying source jars determined with maven-dependency-plugin -->
             <copyResource>
               <source>target/sources</source>
               <target>target/deb/usr/lib/${project.name}/src</target>
               <include>.*\.jar</include>
             </copyResource>
+            <!-- copying our own source jar -->
             <copyResource>
               <source>target</source>
               <target>target/deb/usr/lib/${project.name}/src</target>
               <include>.*-sources\.jar</include>
             </copyResource>
           </copyResources>
-          <useDefaultFixPermissions>true</useDefaultFixPermissions>
           <packageDependencies>
             <packageDependency>openjdk-11-jre</packageDependency>
           </packageDependencies>

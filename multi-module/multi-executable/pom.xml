@@ -82,26 +82,33 @@
           <packageDescription>Demonstrates how to package a Java applications for Debian.</packageDescription>
           <createSymLinks>false</createSymLinks>
           <createIncludeFiles>false</createIncludeFiles>
+          <fileFiltering>
+            <enabled>true</enabled>
+          </fileFiltering>
           <excludeArtifactsRegExp>
             <param>.*sources.*</param>
           </excludeArtifactsRegExp>
           <useDefaultCopyResources>false</useDefaultCopyResources>
           <copyResources>
+            <!-- copy the resources -->
             <copyResource>
               <source>${project.basedir}/src/deb/resources</source>
               <target>${project.basedir}/target/deb</target>
             </copyResource>
+            <!-- copying source jars determined with maven-dependency-plugin -->
             <copyResource>
               <source>${project.basedir}/target/sources</source>
               <target>${project.basedir}/target/deb/usr/lib/${project.name}/src</target>
               <include>.*\.jar</include>
             </copyResource>
+            <!-- copying our own source jar -->
             <copyResource>
               <source>${project.basedir}/target</source>
               <target>${project.basedir}/target/deb/usr/lib/${project.name}/src</target>
               <include>.*-sources\.jar</include>
             </copyResource>
           </copyResources>
+          <!-- ensure that scripts are executable -->
           <useDefaultFixPermissions>true</useDefaultFixPermissions>
           <packageDependencies>
             <packageDependency>openjdk-11-jre</packageDependency>
