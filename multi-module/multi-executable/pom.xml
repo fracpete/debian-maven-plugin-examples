@@ -88,13 +88,8 @@
           <excludeArtifactsRegExp>
             <param>.*sources.*</param>
           </excludeArtifactsRegExp>
-          <useDefaultCopyResources>false</useDefaultCopyResources>
+          <useDefaultCopyResources>true</useDefaultCopyResources>
           <copyResources>
-            <!-- copy the resources -->
-            <copyResource>
-              <source>${project.basedir}/src/deb/resources</source>
-              <target>${project.basedir}/target/deb</target>
-            </copyResource>
             <!-- copying source jars determined with maven-dependency-plugin -->
             <copyResource>
               <source>${project.basedir}/target/sources</source>
